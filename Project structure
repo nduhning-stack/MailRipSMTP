@@ -1,0 +1,8 @@
+bulk-combo-checker/
+├─ server/
+│  ├─ package.json
+│  └─ server.js
+└─ client/
+   ├─ index.html
+   ├─ style.css
+   └─ app.js
