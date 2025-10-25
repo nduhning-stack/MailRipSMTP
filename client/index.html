@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bulk Combo Checker — Safe Test App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Bulk Combo Checker (Local Test)</h1>
+    <p class="note">Only test against the mock server below or servers you own/have permission to test. 🚨</p>
+
+    <section class="input-section">
+      <label for="endpoint">Test API Endpoint</label>
+      <input id="endpoint" type="text" value="http://localhost:3000/auth" />
+
+      <label for="comboInput">Paste combos (one per line):</label>
+      <textarea id="comboInput" placeholder="email:password or user:pass" rows="8"></textarea>
+
+      <div class="row">
+        <input id="fileInput" type="file" accept=".txt" />
+        <button id="loadSample">Load sample combos</button>
+      </div>
+
+      <div class="controls row">
+        <label>Concurrency
+          <input id="concurrency" type="number" min="1" max="50" value="8" />
+        </label>
+
+        <label>Delay (ms between batches)
+          <input id="delay" type="number" min="0" value="0" />
+        </label>
+
+        <label>Retries
+          <input id="retries" type="number" min="0" max="5" value="1" />
+        </label>
+
+        <button id="startBtn" class="primary">Start Checks</button>
+        <button id="stopBtn" disabled>Stop</button>
+      </div>
+    </section>
+
+    <section class="progress-section">
+      <div class="status-row">
+        <div>Total: <span id="total">0</span></div>
+        <div>Checked: <span id="checked">0</span></div>
+        <div>Hits: <span id="hits">0</span></div>
+        <div>Fails: <span id="fails">0</span></div>
+        <div>Errors: <span id="errors">0</span></div>
+      </div>
+
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+
+      <div class="results-controls row">
+        <button id="exportCsv">Export CSV</button>
+        <button id="clearResults">Clear</button>
+      </div>
+
+      <table id="resultsTable">
+        <thead>
+          <tr><th>#</th><th>Combo</th><th>Result</th><th>Details</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <footer>
+      <small>Made for safe local testing — do not use to test third-party services. 🔒</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
